@@ -39,7 +39,7 @@ A Kafka producer is responsible for publishing data to Kafka topics. It sends me
 ## Kafka Consumer:
 A Kafka consumer reads messages from Kafka topics. Consumers subscribe to specific topics to receive messages published to those topics by producers. They can read messages at their own pace, and they can be part of a consumer group where multiple consumers collectively consume messages from a topic, ensuring load balancing and fault tolerance.
 
-We are going to set up a Kafka broker in Docker. If you're using either Linux or Windows, please install Docker Desktop from the Docker website. 
+We are going to set up a Kafka broker in Docker. If you're using either Linux or Windows, please install Docker Desktop from the Docker website. You can check my video to install docker on windows.
 1. We will setup a single Kafka container. 
 2. And set up Kafdrop, a web-based UI tool for monitoring Apache Kafka clusters
 
