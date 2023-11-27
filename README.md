@@ -5,9 +5,9 @@
 ## What is Kafka?
 
 **Definition:**
-The Kafka is an events streaming platform. Events, or messages, represent the actual data that is exchanged through Kafka. It is arguably the most popular messaging platform in the world. In Kafka's world, there are data publishers called producers which push messages into Kafka. And there are subscribers called consumers which listen and receive the messages.
+The Kafka is an events streaming platform. Events, or messages, represent the actual data that is exchanged through Kafka. It is arguably the most popular messaging platform in the world. In Kafka's world, there are data publishers called producers who push messages into Kafka. And there are subscribers called consumers which listen and receive the messages.
 
-**Capabilities Kafka provide for Data Exchange:**
+**Capabilities Kafka provides for Data Exchange:**
 - It collects messages from multiple producers concurrently. 
 - It provides persistent storage of the messages received. 
 - This provides fault-tolerance capabilities. 
@@ -27,7 +27,7 @@ A Kafka broker is a single Kafka server or instance running in a Kafka cluster. 
 - It also keeps a heartbeat with every consumer so when a consumer dies, it can track and reset. 
 Kafka brokers manage the lifecycle of topics. 
 
-## What is Topic?
+## What is the Topic?
 A topic in Kafka is an entity that holds messages. It's similar to a file that contains papers where the messages represent the papers. It's similar to a database table that contains records where the messages represent the records. Topics can be considered as a queue for similar messages. 
 
 - Each topic supports multiple producers to publish data to the topic concurrently
@@ -40,8 +40,8 @@ A Kafka producer is responsible for publishing data to Kafka topics. It sends me
 A Kafka consumer reads messages from Kafka topics. Consumers subscribe to specific topics to receive messages published to those topics by producers. They can read messages at their own pace, and they can be part of a consumer group where multiple consumers collectively consume messages from a topic, ensuring load balancing and fault tolerance.
 
 We are going to set up a Kafka broker in Docker. If you're using either Linux or Windows, please install Docker Desktop from the Docker website. You can check my video to install docker on windows.
-1. We will setup a single Kafka container. 
-2. And set up Kafdrop, a web-based UI tool for monitoring Apache Kafka clusters
+1. We will set up a single Kafka container. 
+2. And Set up Kafdrop, a web-based UI tool for monitoring Apache Kafka clusters
 
 The Docker Compose configuration for the same is available in the kafka-single-node.yml file. 
 - We have the Kafka service, which is from Bitnami. We will be using Kafka version 3.4. 
@@ -107,6 +107,7 @@ We keep the partition size to one and replication to one since we only have one 
 When you execute this command, it communicates with the Kafka broker running on localhost at port 29092. The purpose is to gather information about all the available topics within the Kafka cluster connected to this broker.
 
 Upon execution, this command retrieves and displays details about existing Kafka topics. It showing information such as the topic name, number of partitions, replication factor, and configuration settings associated with each topic. This command provides a high-level summary of the Kafka topics present in the cluster connected to the specified broker.
+
 5. Publishing Messages to Topic1
 ```js
         ./kafka-console-producer.sh \
@@ -114,6 +115,7 @@ Upon execution, this command retrieves and displays details about existing Kafka
             --topic Topic1
 ```
 This command, when executed, starts a console-based producer that connects to a Kafka broker running locally on port 29092. Once the producer is running, it's configured to send messages to the Kafka topic named Topic1. Any text entered in the console after executing this command will be treated as a message and will be sent to the specified Kafka topic (Topic1). This allows users to manually input messages that will be published to the specified Kafka topic in real-time via the command line.
+
 6. Consuming Messages from Topic1: Consumer1
 ```js
         ./kafka-console-consumer.sh \
@@ -123,6 +125,7 @@ This command, when executed, starts a console-based producer that connects to a 
 This command, when executed, starts a console-based consumer that connects to a Kafka broker running locally on port 29092. Once the consumer is running, it's configured to read and display messages from the Kafka topic named Topic1.
 
 Any messages that are produced and sent to the Topic1 Kafka topic will be consumed and displayed in the console where this command is executed. This allows users to see messages being published to the specified Kafka topic (Topic1) in real-time via the command line.
+
 7. Consuming Messages from Topic1: Consumer2
 ```js
         ./kafka-console-consumer.sh \
@@ -133,12 +136,14 @@ Any messages that are produced and sent to the Topic1 Kafka topic will be consum
 However, the significant difference here is the --from-beginning flag. By including --from-beginning, the consumer will start consuming messages from the very beginning of the topic, meaning it will read all the messages available in the topic, starting from the earliest available offset.
 
 This is particularly useful when you want to read all the historical messages in a topic rather than only receiving new messages that are produced after the consumer has started. The consumer will display all past and future messages from the specified Kafka topic on the command line.
+
 8. Publishing Messages to Topic2
 ```js
         ./kafka-console-producer.sh \
             --bootstrap-server localhost:29092 \
             --topic Topic2
 ```
+
 9. Consuming Messages from Topic2: Consumer3
 ```js
         ./kafka-console-consumer.sh \
